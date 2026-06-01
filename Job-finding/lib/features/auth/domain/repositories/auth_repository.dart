@@ -6,7 +6,6 @@ abstract class AuthRepository {
   Future<Either<Failure, User>> login(String email, String password);
   Future<Either<Failure, User>> loginWithGoogle();
   Future<Either<Failure, User>> signUp(String fullName, String email, String password);
-  Future<Either<Failure, void>> forgotPassword(String email);
-  Future<Either<Failure, void>> resendEmail(String email);
   Future<Either<Failure, void>> logout();
+  Future<Either<Failure, User?>> getCurrentUser();
 }

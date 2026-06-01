@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "159545416720",
+    "project_id": "jop-dc281",
+    "storage_bucket": "jop-dc281.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159545416720:android:b4ad12ded2938c44effe95",
+        "android_client_info": {
+          "package_name": "com.example.movieticket.movie_ticket_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvrz3JOzSZGlWHOc2PRdHhEhGVZBDYgL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

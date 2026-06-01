@@ -6,6 +6,7 @@ import '../../features/auth/presentation/pages/onboarding_page.dart';
 import '../../features/auth/presentation/pages/signup_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
 import '../../features/auth/presentation/pages/success_page.dart';
+import '../../features/home/presentation/pages/home_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -41,6 +42,10 @@ class AppRouter {
       GoRoute(
         path: '/success',
         builder: (context, state) => const SuccessPage(),
+      ),
+      GoRoute(
+        path: '/home',
+        builder: (context, state) => const HomePage(),
       ),
     ],
   );
