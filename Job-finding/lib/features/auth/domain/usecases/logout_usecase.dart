@@ -2,12 +2,12 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/error/failures.dart';
 import '../repositories/auth_repository.dart';
 
-class ForgotPasswordUseCase {
+class LogoutUseCase {
   final AuthRepository repository;
 
-  ForgotPasswordUseCase(this.repository);
+  LogoutUseCase(this.repository);
 
-  Future<Either<Failure, void>> call(String email) {
-    return repository.forgotPassword(email);
+  Future<Either<Failure, void>> call() {
+    return repository.logout();
   }
 }

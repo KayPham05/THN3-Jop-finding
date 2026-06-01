@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../bloc/auth_bloc.dart';
+import '../bloc/auth_event.dart';
+import '../bloc/auth_state.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -13,32 +17,37 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      if (mounted) {
-        context.go('/onboarding');
-      }
-    });
+    context.read<AuthBloc>().add(AuthCheckRequested());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.primary,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('lib/core/asset/logo.png', width: 80),
-            const SizedBox(height: 16),
-            const Text(
-              'Jobspot',
-              style: TextStyle(
-                color: AppColors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is Authenticated) {
+          context.go('/home');
+        } else if (state is Unauthenticated) {
+          context.go('/onboarding');
+        }
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.primary,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('lib/core/asset/logo.png', width: 80),
+              const SizedBox(height: 16),
+              const Text(
+                'Jobspot',
+                style: TextStyle(
+                  color: AppColors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
